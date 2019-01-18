@@ -1,0 +1,15 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+curl
+rsconnect
+devtools
+usethis
+shiny
+ggplot2
+slidifyLibraries
+slidify

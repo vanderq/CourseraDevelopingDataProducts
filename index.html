@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Developing Data Products</title>
+  <meta name="description" content="">
+  <meta name="author" content="Alexander van der Kuijl">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/default.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  
+  <style>
+.reveal h1 {
+    font-size: 2em;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.reveal h2 {
+    font-size: 1.5em;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.reveal p {
+    font-size: 0.75em;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+
+</style>
+
+<h1>Developing Data Products</h1>
+
+<h2>Coursera Data Science Project</h2>
+
+<hr>
+
+<p>Death Causes in the US between 1999 and 2016</p>
+
+<p>Alexander van der Kuijl</p>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h2>Introduction</h2>
+  <p>This presentation is for the Developing Data Products Course at Coursera.</p>
+
+<p>This course is part of the Data Science Specialization at Coursera</p>
+
+<p>In this final Assignment a Shiny App needs to be developed.</p>
+
+<p>This presentation provides information about this Shiny App.</p>
+
+<p>The Shiny App can be found at:</p>
+
+<p>The source code of the Shiny App can be found at:</p>
+
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h2>The App</h2>
+  <p>This App is using Death Cause data in the US between 1999 and 2016.</p>
+
+<p>It allows the user to select years, possible causes and states, and view the outcome.</p>
+
+<p>The output is plotted in a graph, which also shows an linear model approximation.</p>
+
+<p>A linear model is calculated, for which the intercept and the slope are displayed.</p>
+
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h2>DataSet</h2>
+  <p>The Dataset is the Death Cause data in the US between 1999 and 2016.</p>
+
+<p>This data is coming from the National Center for Health Statistics, and is obtained from:
+<a href="https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu">https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu</a></p>
+
+<p>This dataset presents the age-adjusted death rates for the 10 leading causes of death in the United States beginning in 1999.</p>
+
+<p>Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia using demographic and medical characteristics. Age-adjusted death rates (per 100,000 population) are based on the 2000 U.S. standard population. Populations used for computing death rates after 2010 are postcensal estimates based on the 2010 census, estimated as of July 1, 2010. Rates for census years are based on populations enumerated in the corresponding censuses. Rates for non-census years before 2010 are revised using updated intercensal population estimates and may differ from rates previously published.</p>
+
+<p>Causes of death classified by the International Classification of Diseases, Tenth Revision (ICD–10) are ranked according to the number of deaths assigned to rankable causes. Cause of death statistics are based on the underlying cause of death.</p>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h2>DataSet</h2>
+  <p>The data looks like this:</p>
+
+<pre><code class="r">nchsData &lt;- read.csv(&quot;NCHS_-_Leading_Causes_of_Death__United_States.csv&quot;)
+head(nchsData)
+</code></pre>
+
+<pre><code>##   Year                                      X113.Cause.Name
+## 1 2016 Accidents (unintentional injuries) (V01-X59,Y85-Y86)
+## 2 2016 Accidents (unintentional injuries) (V01-X59,Y85-Y86)
+## 3 2016 Accidents (unintentional injuries) (V01-X59,Y85-Y86)
+## 4 2016 Accidents (unintentional injuries) (V01-X59,Y85-Y86)
+## 5 2016 Accidents (unintentional injuries) (V01-X59,Y85-Y86)
+## 6 2016 Accidents (unintentional injuries) (V01-X59,Y85-Y86)
+##               Cause.Name      State Deaths Age.adjusted.Death.Rate
+## 1 Unintentional injuries    Alabama   2755                    55.5
+## 2 Unintentional injuries     Alaska    439                    63.1
+## 3 Unintentional injuries    Arizona   4010                    54.2
+## 4 Unintentional injuries   Arkansas   1604                    51.8
+## 5 Unintentional injuries California  13213                    32.0
+## 6 Unintentional injuries   Colorado   2880                    51.2
+</code></pre>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'default', 
+    transition: Reveal.getQueryHash().transition || 'default', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
