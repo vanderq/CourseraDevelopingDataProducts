@@ -56,8 +56,10 @@ In this final Assignment a Shiny App needs to be developed.
 This presentation provides information about this Shiny App.
 
 The Shiny App can be found at:
+https://vanderq.shinyapps.io/courseradataproductsassignment/
 
 The source code of the Shiny App can be found at:
+https://github.com/vanderq/CourseraDevelopingDataProducts
 
 ---
 
